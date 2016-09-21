@@ -5,6 +5,8 @@ import imdbService from '../../services/imdb.service';
 
 import trailerComponent from './trailers/trailer.modal';
 
+import './movies.css';
+
 class MoviesController {
     constructor(imdbService, $uibModal) {
         this.imdbService = imdbService;
