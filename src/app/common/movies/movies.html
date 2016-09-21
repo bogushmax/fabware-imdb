@@ -14,7 +14,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="movie in $ctrl.movies">
+        <tr ng-repeat="movie in ::$ctrl.movies">
             <td>
                 <a href="#" ng-click="$ctrl.toggleFavourite(movie)">
                     <i class="glyphicon glyphicon-star favourite-btn" ng-show="movie.isFavourite"></i>
@@ -30,7 +30,7 @@
             <td>
                 <a class="btn-block"
                    ng-repeat="director in movie.directors"
-                   ng-href="http://www.imdb.com/name/{{director.id}}">{{:: director.name}}</a>
+                   ng-href="http://www.imdb.com/name/{{:: director.id}}">{{:: director.name}}</a>
             </td>
             <td>
                 <button ng-repeat="trailer in movie.trailers"
