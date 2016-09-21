@@ -9,17 +9,31 @@ import 'bootstrap/dist/css/bootstrap.css';
 import '../style/app.css';
 
 /*
-import 'bootstrap';
-*/
+ import 'bootstrap';
+ */
+
+class AppController {
+    constructor($rootRouter) {
+        this.$rootRouter = $rootRouter;
+    }
+
+    isActive(routerLink) {
+        var instruction = this.$rootRouter.generate(routerLink);
+        return this.$rootRouter.isRouteActive(instruction);
+    }
+}
+
+AppController.$inject = ['$rootRouter'];
 
 let appComponent = {
-  template: require('./app.html'),
-  $routeConfig: [
-    {path: '/top', name: 'Top', component: 'topComponent', useAsDefault: true},
-    {path: '/chart', name: 'Chart', component: 'chartComponent' },
-    {path: '/favourites', name: 'Favourites', component: 'favouritesComponent' }
-  ]
+    template: require('./app.html'),
+    controller: AppController,
+    $routeConfig: [
+        {path: '/top', name: 'Top', component: 'topComponent', useAsDefault: true},
+        {path: '/chart', name: 'Chart', component: 'chartComponent'},
+        {path: '/favourites', name: 'Favourites', component: 'favouritesComponent'}
+    ]
 };
 
 angular.module(appModule.name)
-  .component('appComponent', appComponent);
+    .component('appComponent', appComponent);

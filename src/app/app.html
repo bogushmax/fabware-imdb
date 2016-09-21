@@ -1,8 +1,8 @@
 <div class="content">
   <ul class="nav nav-tabs">
-      <li><a ng-link="['Top']">Top</a></li>
-      <li><a ng-link="['Chart']">Chart</a></li>
-      <li><a ng-link="['Favourites']">Favourites</a></li>
+      <li ng-class="{ active: $ctrl.isActive(['Top']) }"><a ng-link="['Top']">Top</a></li>
+      <li ng-class="{ active: $ctrl.isActive(['Chart']) }"><a ng-link="['Chart']">Chart</a></li>
+      <li ng-class="{ active: $ctrl.isActive(['Favourites']) }"><a ng-link="['Favourites']">Favourites</a></li>
   </ul>
   <ng-outlet></ng-outlet>
 </div>
