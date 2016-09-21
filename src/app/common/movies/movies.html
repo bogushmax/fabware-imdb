@@ -1,0 +1,43 @@
+<div class="movies">
+    <table class="table">
+        <thead>
+        <tr>
+            <th></th>
+            <th>Poster</th>
+            <th>Name</th>
+            <th>Year</th>
+            <th>Rating</th>
+            <th>Genres</th>
+            <th>Countries</th>
+            <th>Directors</th>
+            <th>Trailers</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="movie in $ctrl.movies">
+            <td>
+                <a href="#" ng-click="$ctrl.toggleFavourite(movie)">
+                    <i class="glyphicon glyphicon-star favourite-btn" ng-show="movie.isFavourite"></i>
+                    <i class="glyphicon glyphicon-star-empty favourite-btn" ng-hide="movie.isFavourite"></i>
+                </a>
+            </td>
+            <td><img width="50px" ng-src="{{:: movie.urlPoster}}"></td>
+            <td>{{:: movie.title}}</td>
+            <td>{{:: movie.year}}</td>
+            <td>{{:: movie.rating}}</td>
+            <td>{{:: movie.genres.join(', ')}}</td>
+            <td>{{:: movie.countries.join(', ')}}</td>
+            <td>
+                <a class="btn-block"
+                   ng-repeat="director in movie.directors"
+                   ng-href="http://www.imdb.com/name/{{director.id}}">{{:: director.name}}</a>
+            </td>
+            <td>
+                <button ng-repeat="trailer in movie.trailers"
+                        ng-click="$ctrl.openTrailer(trailer)"
+                        class="btn btn-default btn-sm btn-block">{{:: trailer.title}}</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
