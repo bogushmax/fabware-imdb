@@ -9,7 +9,7 @@ import d3pie from 'd3pie';
 class PieDirective {
     constructor() {
         this.restrict = 'E';
-        this.template = '<div id="pie"></div>';
+        this.template = '<div class="pie"></div>';
         this.scope = {
             data: '='
         };
@@ -18,7 +18,7 @@ class PieDirective {
     link(scope, element) {
         scope.$watch('data', (data) => {
             if (data) {
-                new d3pie('pie', {
+                new d3pie(element[0], {
                     "size": {
                         "canvasWidth": 590,
                         "pieOuterRadius": "90%"

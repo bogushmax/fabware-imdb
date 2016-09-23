@@ -14,7 +14,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="movie in ::$ctrl.movies">
+        <tr ng-repeat="movie in $ctrl.movies">
             <td>
                 <a href="#" ng-click="$ctrl.toggleFavourite(movie)">
                     <i class="glyphicon glyphicon-star favourite-btn" ng-show="movie.isFavourite"></i>

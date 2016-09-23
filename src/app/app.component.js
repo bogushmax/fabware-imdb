@@ -6,7 +6,7 @@ import chartComponent from './chart/chart.component';
 import favouritesComponent from './favourites/favourites.component';
 
 import 'bootstrap/dist/css/bootstrap.css';
-import '../style/app.css';
+import './app.css';
 
 /*
  import 'bootstrap';
