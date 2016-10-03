@@ -78,4 +78,32 @@ describe('IMDB Service', () => {
         });
         $httpBackend.flush();
     });
+
+    it('should remove favourite movies', () => {
+        var favouriteMovie;
+        $httpBackend.whenGET('data/imdb/top20.json').respond({
+            data: {
+                movies: [
+                    {
+                        idIMDB: '1'
+                    },
+                    {
+                        idIMDB: '2'
+                    }
+                ]
+            }
+        });
+        imdbService.getAllFavourites().then((movies) => {
+            expect(movies.length).toEqual(0);
+            favouriteMovie = imdbService.addFavourite({idIMDB: '1'});
+            imdbService.getAllFavourites().then((movies) => {
+                expect(movies.length).toEqual(1);
+                imdbService.removeFavourite(favouriteMovie);
+                imdbService.getAllFavourites().then((movies) => {
+                    expect(movies.length).toEqual(0);
+                });
+            });
+        });
+        $httpBackend.flush();
+    });
 });

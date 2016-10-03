@@ -59,9 +59,14 @@ class IMDBService {
 
     addFavourite(movie) {
         var favouritesIds = this.getFavouriteMoviesIds();
-        favouritesIds.push(movie.idIMDB);
-        this.storageService.set('favourites', favouritesIds);
-        movie.isFavourite = true;
+        var index = favouritesIds.indexOf(movie.idIMDB);
+        if (index == -1) {
+            favouritesIds.push(movie.idIMDB);
+            this.storageService.set('favourites', favouritesIds);
+            movie.isFavourite = true;
+            return movie;
+        }
+        return false;
     }
 
     removeFavourite(movie) {
@@ -71,7 +76,9 @@ class IMDBService {
             favouritesIds.splice(index, 1);
             this.storageService.set('favourites', favouritesIds);
             movie.isFavourite = false;
+            return movie;
         }
+        return false;
     }
 }
 
